@@ -16,53 +16,80 @@ export function IceQueenMascot({ className }: { className?: string }) {
 
       {/* sparkles */}
       <g fill="#FFFFFF" opacity="0.9">
-        <circle cx="30" cy="50" r="3" />
-        <circle cx="172" cy="56" r="2.4" />
-        <circle cx="26" cy="150" r="2.6" />
-        <circle cx="176" cy="150" r="2.2" />
+        <circle cx="26" cy="46" r="3" />
+        <circle cx="174" cy="52" r="2.4" />
+        <circle cx="22" cy="150" r="2.6" />
+        <circle cx="178" cy="150" r="2.2" />
       </g>
 
       {/* snow ground */}
-      <ellipse cx="100" cy="196" rx="72" ry="16" fill="#FFFFFF" opacity="0.8" />
+      <ellipse cx="100" cy="198" rx="66" ry="14" fill="#FFFFFF" opacity="0.8" />
+
+      {/* dress body, more torso, less oversized head */}
+      <path
+        d="M 66 148 Q 100 138 134 148 L 148 198 L 52 198 Z"
+        fill="#7FD4F5"
+        stroke="#4FB6E8"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      <circle cx="100" cy="164" r="4.5" fill="#EAF8FF" stroke="#4FB6E8" strokeWidth="1.5" />
+      <circle cx="100" cy="178" r="4.5" fill="#EAF8FF" stroke="#4FB6E8" strokeWidth="1.5" />
 
       {/* stubby arms */}
-      <circle cx="58" cy="164" r="12" fill="#FFDFC0" />
-      <circle cx="142" cy="164" r="12" fill="#FFDFC0" />
+      <circle cx="60" cy="160" r="10" fill="#FFDFC0" />
+      <circle cx="140" cy="160" r="10" fill="#FFDFC0" />
 
-      {/* dress body, small and bell-shaped under the big head */}
-      <path d="M 68 148 Q 100 138 132 148 L 148 198 L 52 198 Z" fill="#7FD4F5" stroke="#4FB6E8" strokeWidth="3" strokeLinejoin="round" />
-      <circle cx="100" cy="168" r="5" fill="#EAF8FF" stroke="#4FB6E8" strokeWidth="2" />
-      <circle cx="100" cy="184" r="5" fill="#EAF8FF" stroke="#4FB6E8" strokeWidth="2" />
+      {/* neck */}
+      <rect x="90" y="122" width="20" height="18" fill="#FFDFC0" />
 
-      {/* hair behind big head */}
-      <path d="M 44 100 Q 40 46 100 42 Q 160 46 156 100 L 160 150 L 146 150 L 142 104 L 58 104 L 54 150 L 40 150 Z" fill="url(#iq-hair)" stroke="#D8A63C" strokeWidth="3" strokeLinejoin="round" />
+      {/* hair behind head */}
+      <path
+        d="M 52 92 Q 48 40 100 36 Q 152 40 148 92 L 150 132 L 138 132 L 134 96 L 66 96 L 62 132 L 50 132 Z"
+        fill="url(#iq-hair)"
+        stroke="#D8A63C"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
 
-      {/* big round head, chibi proportions */}
-      <circle cx="100" cy="98" r="56" fill="#FFE9D6" stroke="#E8B98A" strokeWidth="3" />
+      {/* head, smaller and rounder proportion to the body */}
+      <circle cx="100" cy="88" r="46" fill="#FFE9D6" stroke="#E8B98A" strokeWidth="2.5" />
 
       {/* fringe */}
-      <path d="M 46 92 Q 42 48 100 44 Q 158 48 154 92 Q 146 74 128 80 Q 116 62 100 76 Q 84 62 72 80 Q 54 74 46 92 Z" fill="url(#iq-hair)" stroke="#D8A63C" strokeWidth="3" strokeLinejoin="round" />
+      <path
+        d="M 56 84 Q 52 42 100 38 Q 148 42 144 84 Q 137 68 121 74 Q 111 58 100 70 Q 89 58 79 74 Q 63 68 56 84 Z"
+        fill="url(#iq-hair)"
+        stroke="#D8A63C"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
 
       {/* blush */}
-      <ellipse cx="66" cy="112" rx="10" ry="7" fill="#FF9EBA" opacity="0.6" />
-      <ellipse cx="134" cy="112" rx="10" ry="7" fill="#FF9EBA" opacity="0.6" />
+      <ellipse cx="70" cy="98" rx="8" ry="5.5" fill="#FF9EBA" opacity="0.6" />
+      <ellipse cx="130" cy="98" rx="8" ry="5.5" fill="#FF9EBA" opacity="0.6" />
 
-      {/* big close-set cute eyes */}
-      <ellipse cx="82" cy="100" rx="10" ry="13" fill="#3C3C3C" />
-      <ellipse cx="118" cy="100" rx="10" ry="13" fill="#3C3C3C" />
-      <circle cx="85.5" cy="93" r="3.6" fill="#ffffff" />
-      <circle cx="121.5" cy="93" r="3.6" fill="#ffffff" />
-      <circle cx="79" cy="103" r="2" fill="#ffffff" />
-      <circle cx="115" cy="103" r="2" fill="#ffffff" />
+      {/* cute close-set eyes */}
+      <ellipse cx="85" cy="88" rx="8" ry="10.5" fill="#3C3C3C" />
+      <ellipse cx="115" cy="88" rx="8" ry="10.5" fill="#3C3C3C" />
+      <circle cx="88" cy="82" r="3" fill="#ffffff" />
+      <circle cx="118" cy="82" r="3" fill="#ffffff" />
+      <circle cx="82.5" cy="91" r="1.6" fill="#ffffff" />
+      <circle cx="112.5" cy="91" r="1.6" fill="#ffffff" />
 
       {/* tiny cute smile */}
-      <path d="M 92 118 Q 100 124 108 118" fill="none" stroke="#E8779A" strokeWidth="3.5" strokeLinecap="round" />
+      <path d="M 93 104 Q 100 109 107 104" fill="none" stroke="#E8779A" strokeWidth="3" strokeLinecap="round" />
 
       {/* snowflake crown */}
-      <path d="M 74 56 L 80 36 L 91 50 L 100 28 L 109 50 L 120 36 L 126 56 Z" fill="#FFFFFF" stroke="#6FCBEE" strokeWidth="3" strokeLinejoin="round" />
-      <circle cx="100" cy="44" r="4.5" fill="#9FE0F5" stroke="#4FB6E8" strokeWidth="1.5" />
-      <circle cx="80" cy="42" r="3" fill="#FF9EBA" />
-      <circle cx="120" cy="42" r="3" fill="#FF9EBA" />
+      <path
+        d="M 78 48 L 83 30 L 92 42 L 100 22 L 108 42 L 117 30 L 122 48 Z"
+        fill="#FFFFFF"
+        stroke="#6FCBEE"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      <circle cx="100" cy="38" r="4" fill="#9FE0F5" stroke="#4FB6E8" strokeWidth="1.5" />
+      <circle cx="83" cy="36" r="2.6" fill="#FF9EBA" />
+      <circle cx="117" cy="36" r="2.6" fill="#FF9EBA" />
     </svg>
   );
 }
