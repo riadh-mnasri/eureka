@@ -8,6 +8,7 @@ import type { Domain } from "@/lib/domains";
 import {
   getProblemsForTier,
   getProblemsForTierAndDomain,
+  shuffleProblemOptions,
   type Problem,
 } from "@/lib/content/problems";
 import { shuffle } from "@/lib/shuffle";
@@ -45,7 +46,11 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
     // The problem order is randomized on purpose; picking it after mount
     // (instead of during render) avoids a server/client hydration mismatch.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setProblems(shuffle(pool).slice(0, QUESTIONS_PER_CHALLENGE));
+    setProblems(
+      shuffle(pool)
+        .slice(0, QUESTIONS_PER_CHALLENGE)
+        .map(shuffleProblemOptions)
+    );
   }, [profile.tier, domain]);
 
   if (!problems) {

@@ -1,6 +1,7 @@
 import type { Tier } from "../profiles";
 import type { Domain } from "../domains";
 import type { StrategyId } from "../strategies";
+import { shuffle } from "../shuffle";
 
 export type LocalizedText = { fr: string; en: string };
 
@@ -774,4 +775,11 @@ export function getProblemsForTier(tier: Tier): Problem[] {
 
 export function getProblemsForTierAndDomain(tier: Tier, domain: Domain): Problem[] {
   return PROBLEMS.filter((problem) => problem.tier === tier && problem.domain === domain);
+}
+
+export function shuffleProblemOptions(problem: Problem): Problem {
+  const order = shuffle(problem.options.map((_, i) => i));
+  const options = order.map((i) => problem.options[i]);
+  const correctIndex = order.indexOf(problem.correctIndex);
+  return { ...problem, options, correctIndex };
 }
