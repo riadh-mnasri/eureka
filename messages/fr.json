@@ -64,9 +64,18 @@
     "day": "jour",
     "badgesUnlocked": "Badges débloqués",
     "viewProfile": "Voir le profil",
-    "noActivity": "N'a pas encore commencé"
+    "noActivity": "N'a pas encore commencé",
+    "reset": "Réinitialiser la progression",
+    "resetConfirm": "Réinitialiser toute la progression de {name} (ceinture, série, badges) ? Cette action est définitive.",
+    "resetDone": "Progression réinitialisée."
   },
   "common": {
     "back": "Retour"
+  },
+  "parentGate": {
+    "title": "Espace parents",
+    "instructions": "Réponds à ce calcul pour continuer.",
+    "wrong": "Pas tout à fait, réessaie avec ce nouveau calcul.",
+    "submit": "Valider"
   }
 }

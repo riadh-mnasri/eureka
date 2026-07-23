@@ -59,6 +59,11 @@ export function saveProfileState(profileId: string, state: ProfileState): void {
   window.localStorage.setItem(stateKey(profileId), JSON.stringify(state));
 }
 
+export function resetProfileState(profileId: string): void {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(stateKey(profileId));
+}
+
 export function getSelectedProfileId(): string | null {
   if (typeof window === "undefined") return null;
   return window.localStorage.getItem(SELECTED_PROFILE_KEY);

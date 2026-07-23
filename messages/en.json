@@ -64,9 +64,18 @@
     "day": "day",
     "badgesUnlocked": "Badges unlocked",
     "viewProfile": "View profile",
-    "noActivity": "Hasn't started yet"
+    "noActivity": "Hasn't started yet",
+    "reset": "Reset progress",
+    "resetConfirm": "Reset all of {name}'s progress (belt, streak, badges)? This cannot be undone.",
+    "resetDone": "Progress reset."
   },
   "common": {
     "back": "Back"
+  },
+  "parentGate": {
+    "title": "Parents area",
+    "instructions": "Answer this calculation to continue.",
+    "wrong": "Not quite, try again with this new calculation.",
+    "submit": "Continue"
   }
 }
