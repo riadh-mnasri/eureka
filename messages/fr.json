@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "appName": "Eureka",
+    "parents": "Espace parents",
+    "language": "Langue"
+  },
+  "home": {
+    "title": "Bienvenue sur Eureka",
+    "subtitle": "Entraîne-toi aux olympiades de mathématiques en t'amusant !",
+    "choose": "Qui s'entraîne aujourd'hui ?",
+    "yearsOld": "ans",
+    "continue": "Continuer",
+    "play": "Jouer",
+    "beltShort": "Ceinture"
+  },
+  "dashboard": {
+    "belt": "Ta ceinture",
+    "streak": "Série",
+    "streakDays": "jours de suite",
+    "streakDay": "jour de suite",
+    "startChallenge": "Commencer le défi du jour",
+    "playedToday": "Défi du jour déjà terminé !",
+    "mastery": "Ta maîtrise par domaine",
+    "badges": "Tes badges",
+    "seeAllBadges": "Voir tous les badges",
+    "xpToNextBelt": "XP jusqu'à la prochaine ceinture",
+    "maxBelt": "Ceinture maximale atteinte !",
+    "switchProfileCta": "Changer d'enfant",
+    "practiceThisSkill": "S'entraîner sur ce domaine"
+  },
+  "domains": {
+    "title": "Domaines d'entraînement"
+  },
+  "challenge": {
+    "question": "Question",
+    "of": "sur",
+    "hint": "Indice",
+    "check": "Valider",
+    "next": "Question suivante",
+    "correct": "Bonne réponse !",
+    "incorrect": "Pas tout à fait...",
+    "strategy": "Stratégie",
+    "finish": "Voir mes résultats",
+    "recapTitle": "Bravo, défi terminé !",
+    "xpEarned": "XP gagné",
+    "correctAnswers": "bonnes réponses",
+    "perfect": "Sans faute ! Un badge spécial t'attend.",
+    "backToDashboard": "Retour au tableau de bord",
+    "newBadge": "Nouveau badge débloqué !",
+    "newBelt": "Nouvelle ceinture débloquée !"
+  },
+  "badges": {
+    "title": "Tes badges",
+    "locked": "À débloquer",
+    "unlocked": "Débloqué",
+    "back": "Retour"
+  },
+  "parents": {
+    "title": "Espace parents",
+    "subtitle": "Un aperçu de la progression de chaque enfant, sans surveillance intrusive.",
+    "belt": "Ceinture",
+    "streak": "Série",
+    "days": "jours",
+    "day": "jour",
+    "badgesUnlocked": "Badges débloqués",
+    "viewProfile": "Voir le profil",
+    "noActivity": "N'a pas encore commencé"
+  },
+  "common": {
+    "back": "Retour"
+  }
+}

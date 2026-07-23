@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "appName": "Eureka",
+    "parents": "Parents area",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Welcome to Eureka",
+    "subtitle": "Train for math olympiads while having fun!",
+    "choose": "Who's training today?",
+    "yearsOld": "years old",
+    "continue": "Continue",
+    "play": "Play",
+    "beltShort": "Belt"
+  },
+  "dashboard": {
+    "belt": "Your belt",
+    "streak": "Streak",
+    "streakDays": "days in a row",
+    "streakDay": "day in a row",
+    "startChallenge": "Start today's challenge",
+    "playedToday": "Today's challenge is already done!",
+    "mastery": "Your mastery by domain",
+    "badges": "Your badges",
+    "seeAllBadges": "See all badges",
+    "xpToNextBelt": "XP to next belt",
+    "maxBelt": "Maximum belt reached!",
+    "switchProfileCta": "Switch child",
+    "practiceThisSkill": "Practice this domain"
+  },
+  "domains": {
+    "title": "Training domains"
+  },
+  "challenge": {
+    "question": "Question",
+    "of": "of",
+    "hint": "Hint",
+    "check": "Check",
+    "next": "Next question",
+    "correct": "Correct!",
+    "incorrect": "Not quite...",
+    "strategy": "Strategy",
+    "finish": "See my results",
+    "recapTitle": "Well done, challenge complete!",
+    "xpEarned": "XP earned",
+    "correctAnswers": "correct answers",
+    "perfect": "Perfect round! A special badge is waiting for you.",
+    "backToDashboard": "Back to dashboard",
+    "newBadge": "New badge unlocked!",
+    "newBelt": "New belt unlocked!"
+  },
+  "badges": {
+    "title": "Your badges",
+    "locked": "To unlock",
+    "unlocked": "Unlocked",
+    "back": "Back"
+  },
+  "parents": {
+    "title": "Parents area",
+    "subtitle": "A quick look at each child's progress, without intrusive tracking.",
+    "belt": "Belt",
+    "streak": "Streak",
+    "days": "days",
+    "day": "day",
+    "badgesUnlocked": "Badges unlocked",
+    "viewProfile": "View profile",
+    "noActivity": "Hasn't started yet"
+  },
+  "common": {
+    "back": "Back"
+  }
+}
