@@ -1,17 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #e7f2f1;
-  --foreground: #1a2b2e;
-  --color-teal: #0f9a96;
-  --color-teal-dark: #0b7d7a;
-  --color-amber: #f5a742;
-  --color-amber-dark: #d98a26;
-  --color-coral: #f97362;
-  --color-coral-dark: #e2543f;
-  --color-violet: #7c6bcc;
+  --background: #ffffff;
+  --foreground: #3c3c3c;
+  --color-teal: #00c2a8;
+  --color-teal-dark: #00a28c;
+  --color-amber: #ffc700;
+  --color-amber-dark: #e0a800;
+  --color-coral: #ff4b4b;
+  --color-coral-dark: #e23f3f;
+  --color-violet: #a560f5;
+  --color-violet-dark: #8a3fe0;
+  --color-blue: #1cb0f6;
+  --color-blue-dark: #0f95d6;
   --color-card: #ffffff;
-  --color-card-border: #d8e6e4;
+  --color-card-border: #e5e5e5;
 }
 
 @theme inline {
@@ -24,63 +27,63 @@
   --color-coral: var(--color-coral);
   --color-coral-dark: var(--color-coral-dark);
   --color-violet: var(--color-violet);
+  --color-violet-dark: var(--color-violet-dark);
+  --color-blue: var(--color-blue);
+  --color-blue-dark: var(--color-blue-dark);
   --color-card: var(--color-card);
   --color-card-border: var(--color-card-border);
-  --font-heading: var(--font-space-grotesk);
+  --font-heading: var(--font-fredoka);
   --font-sans: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #142320;
-    --foreground: #e7f2f1;
-    --color-card: #1c332f;
-    --color-card-border: #2f4a45;
+    --background: #131f1e;
+    --foreground: #f2f2f2;
+    --color-card: #1c2b29;
+    --color-card-border: #2c3e3b;
   }
 }
 
 body {
   background-color: var(--background);
-  background-image: radial-gradient(circle, color-mix(in srgb, var(--foreground) 18%, transparent) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
 .notecard {
-  border-radius: 0.75rem;
-  border: 3px solid var(--foreground);
-  box-shadow: 5px 5px 0 var(--foreground);
+  border-radius: 1.25rem;
+  border: 2px solid var(--color-card-border);
+  box-shadow: 0 2px 0 var(--color-card-border);
 }
 
 .ink-shadow {
-  filter: drop-shadow(3px 3px 0 var(--foreground));
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.15));
 }
 
 .ink-button {
-  border: 3px solid var(--foreground);
-  border-radius: 0.6rem;
-  box-shadow: 4px 4px 0 var(--foreground);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  border-radius: 1rem;
+  box-shadow: 0 4px 0 var(--btn-shadow, rgba(0, 0, 0, 0.2));
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
 .ink-button:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0 0 0 var(--foreground);
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--btn-shadow, rgba(0, 0, 0, 0.2));
 }
 
 @keyframes bot-bounce {
   0%,
   100% {
-    transform: translateY(0) rotate(-2deg);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px) rotate(2deg);
+    transform: translateY(-6px);
   }
 }
 
 .animate-bot-bounce {
-  animation: bot-bounce 2.4s ease-in-out infinite;
+  animation: bot-bounce 2.2s ease-in-out infinite;
 }
 
 @keyframes pop-in {
@@ -98,6 +101,21 @@ body {
   animation: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+@keyframes node-in {
+  0% {
+    transform: scale(0.5) translateY(16px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-node-in {
+  animation: node-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
 @keyframes confetti-fall {
   0% {
     transform: translate(0, -10vh) rotate(0deg);
@@ -111,49 +129,4 @@ body {
 
 .animate-confetti-fall {
   animation: confetti-fall linear forwards;
-}
-
-@keyframes symbol-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--rot, 0deg));
-  }
-  50% {
-    transform: translateY(-14px) rotate(var(--rot, 0deg));
-  }
-}
-
-.animate-symbol-float {
-  animation: symbol-float ease-in-out infinite;
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-}
-
-.animate-twinkle {
-  animation: twinkle ease-in-out infinite;
-}
-
-@keyframes node-in {
-  0% {
-    transform: scale(0.4) translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-node-in {
-  animation: node-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }

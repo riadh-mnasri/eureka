@@ -8,8 +8,7 @@ import { beltForXp } from "@/lib/gamification";
 import { loadProfileState, setSelectedProfileId, type ProfileState } from "@/lib/storage";
 import { BeltBadge } from "@/components/BeltBadge";
 
-const HEXAGON = "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)";
-const OFFSET = [0, 34, 6] as const;
+const OFFSET = [0, 28, 4] as const;
 
 export function ProfileNode({ profile, index }: { profile: Profile; index: number }) {
   const t = useTranslations("home");
@@ -39,10 +38,9 @@ export function ProfileNode({ profile, index }: { profile: Profile; index: numbe
       style={{ marginTop: offset }}
     >
       <div
-        className="ink-shadow flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center text-4xl sm:text-5xl transition-transform group-hover:-translate-y-1"
+        className="ink-shadow flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center text-4xl sm:text-5xl rounded-full transition-transform group-hover:-translate-y-1"
         style={{
           background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
-          clipPath: HEXAGON,
         }}
         aria-hidden
       >
@@ -54,8 +52,12 @@ export function ProfileNode({ profile, index }: { profile: Profile; index: numbe
       </p>
       {state && state.totalXp > 0 && <BeltBadge belt={belt} size="sm" />}
       <span
-        className="ink-button inline-block px-4 py-1 text-xs font-bold text-white mt-1"
-        style={{ backgroundColor: profile.color.solid }}
+        className="ink-button inline-block px-4 py-1.5 text-xs font-bold text-white mt-1 rounded-xl"
+        style={{
+          backgroundColor: profile.color.solid,
+          // @ts-expect-error custom property read by the ink-button shadow
+          "--btn-shadow": profile.color.dark,
+        }}
       >
         {state && state.totalXp > 0 ? t("continue") : t("play")}
       </span>

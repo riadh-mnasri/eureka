@@ -136,7 +136,11 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
         <button
           type="button"
           onClick={() => router.push(`/profil/${profile.id}`)}
-          className="ink-button w-full bg-coral text-white font-heading text-lg font-bold py-4 cursor-pointer"
+          className="ink-button w-full rounded-2xl bg-coral text-white font-heading text-lg font-bold py-4 cursor-pointer"
+          style={{
+            // @ts-expect-error custom property read by the ink-button shadow
+            "--btn-shadow": "var(--color-coral-dark)",
+          }}
         >
           {t("backToDashboard")}
         </button>
@@ -167,13 +171,13 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
           <button
             type="button"
             onClick={() => setShowHint(true)}
-            className="mb-4 inline-flex items-center gap-2 rounded-lg border-2 border-amber px-3 py-1.5 text-sm font-bold text-amber-dark hover:bg-amber/10 transition-colors cursor-pointer"
+            className="mb-4 inline-flex items-center gap-2 rounded-2xl border-2 border-amber px-3 py-1.5 text-sm font-bold text-amber-dark hover:bg-amber/10 transition-colors cursor-pointer"
           >
             💡 {t("hint")}
           </button>
         )}
         {showHint && selected === null && (
-          <p className="mb-4 text-sm text-foreground/70 bg-amber/10 border-2 border-amber/40 rounded-lg p-3 animate-pop-in">
+          <p className="mb-4 text-sm text-foreground/70 bg-amber/10 border-2 border-amber/40 rounded-2xl p-3 animate-pop-in">
             {current.hint[locale]}
           </p>
         )}
@@ -189,7 +193,7 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
                 type="button"
                 onClick={() => handleSelect(i)}
                 disabled={selected !== null}
-                className={`text-left rounded-lg border-2 px-4 py-3 font-semibold transition-colors ${
+                className={`text-left rounded-2xl border-2 px-4 py-3 font-semibold transition-colors ${
                   showCorrect
                     ? "border-teal bg-teal/15 text-teal-dark"
                     : showWrong
@@ -206,7 +210,7 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
 
       {selected !== null && (
         <div
-          className={`rounded-lg p-4 mb-4 animate-pop-in border-2 ${
+          className={`rounded-2xl p-4 mb-4 animate-pop-in border-2 ${
             isCorrect ? "bg-teal/15 border-teal" : "bg-coral/10 border-coral"
           }`}
         >
@@ -218,7 +222,7 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
       )}
 
       {selected !== null && (
-        <div className="rounded-lg p-4 mb-6 bg-amber/10 border-2 border-amber/40 animate-pop-in flex items-start gap-3">
+        <div className="rounded-2xl p-4 mb-6 bg-amber/10 border-2 border-amber/40 animate-pop-in flex items-start gap-3">
           <span className="text-2xl" aria-hidden>
             {strategy.emoji}
           </span>
@@ -235,7 +239,11 @@ export function ChallengeFlow({ profile, domain }: { profile: Profile; domain?: 
         <button
           type="button"
           onClick={handleNext}
-          className="ink-button w-full bg-teal text-white font-heading text-lg font-bold py-4 cursor-pointer"
+          className="ink-button w-full rounded-2xl bg-teal text-white font-heading text-lg font-bold py-4 cursor-pointer"
+          style={{
+            // @ts-expect-error custom property read by the ink-button shadow
+            "--btn-shadow": "var(--color-teal-dark)",
+          }}
         >
           {isLast ? t("finish") : t("next")}
         </button>

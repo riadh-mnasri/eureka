@@ -12,8 +12,6 @@ import { BeltBadge } from "@/components/BeltBadge";
 import { BadgeChip } from "@/components/BadgeChip";
 import { MasteryRadar } from "@/components/MasteryRadar";
 
-const HEXAGON = "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)";
-
 export function Dashboard({ profile }: { profile: Profile }) {
   const t = useTranslations("dashboard");
   const tDomains = useTranslations("domains");
@@ -40,10 +38,9 @@ export function Dashboard({ profile }: { profile: Profile }) {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <div className="flex items-center gap-3 mb-10">
         <div
-          className="ink-shadow flex h-12 w-12 items-center justify-center text-xl shrink-0"
+          className="flex h-12 w-12 items-center justify-center text-xl shrink-0 rounded-full ink-shadow"
           style={{
             background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
-            clipPath: HEXAGON,
           }}
           aria-hidden
         >
@@ -101,7 +98,11 @@ export function Dashboard({ profile }: { profile: Profile }) {
         <button
           type="button"
           onClick={() => router.push(`/profil/${profile.id}/defi`)}
-          className="ink-button w-full bg-coral text-white font-heading text-lg font-bold py-4 mb-10 cursor-pointer"
+          className="ink-button w-full rounded-2xl bg-coral text-white font-heading text-lg font-bold py-4 mb-10 cursor-pointer"
+          style={{
+            // @ts-expect-error custom property read by the ink-button shadow
+            "--btn-shadow": "var(--color-coral-dark)",
+          }}
         >
           {t("startChallenge")}
         </button>
@@ -118,8 +119,7 @@ export function Dashboard({ profile }: { profile: Profile }) {
             className="group flex flex-col items-center gap-2"
           >
             <div
-              className="ink-shadow flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center text-2xl bg-card transition-transform group-hover:-translate-y-1"
-              style={{ clipPath: HEXAGON }}
+              className="ink-shadow flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center text-2xl bg-card rounded-full transition-transform group-hover:-translate-y-1"
             >
               <span aria-hidden>{domain.emoji}</span>
             </div>

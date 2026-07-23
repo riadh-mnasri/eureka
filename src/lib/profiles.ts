@@ -10,6 +10,7 @@ export type Profile = {
     from: string;
     to: string;
     solid: string;
+    dark: string;
   };
 };
 
@@ -20,7 +21,7 @@ export const PROFILES: Profile[] = [
     age: 6,
     tier: "eclaireur",
     emoji: "🐣",
-    color: { from: "#FFD166", to: "#FFB703", solid: "#F59E0B" },
+    color: { from: "#FFD34D", to: "#FFC107", solid: "#FFB300", dark: "#E0980A" },
   },
   {
     id: "sany",
@@ -28,7 +29,7 @@ export const PROFILES: Profile[] = [
     age: 8,
     tier: "chercheur",
     emoji: "🦊",
-    color: { from: "#FF9F7A", to: "#FF6B6B", solid: "#F97362" },
+    color: { from: "#FF8A65", to: "#FF6B4A", solid: "#FF5A3C", dark: "#E0431F" },
   },
   {
     id: "seji",
@@ -36,7 +37,7 @@ export const PROFILES: Profile[] = [
     age: 11,
     tier: "champion",
     emoji: "🦉",
-    color: { from: "#7BDFF2", to: "#3FC1C9", solid: "#1FAAA6" },
+    color: { from: "#4DD8C7", to: "#00C2A8", solid: "#00B39C", dark: "#00947F" },
   },
 ];
 
