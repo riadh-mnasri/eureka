@@ -3,7 +3,8 @@ export type Tier = "eclaireur" | "chercheur" | "champion";
 export type Avatar =
   | { kind: "emoji"; emoji: string }
   | { kind: "dragon" }
-  | { kind: "chessboard" };
+  | { kind: "chessboard" }
+  | { kind: "ice-queen" };
 
 export type Profile = {
   id: string;
@@ -25,7 +26,7 @@ export const PROFILES: Profile[] = [
     name: "Syma",
     age: 6,
     tier: "eclaireur",
-    avatar: { kind: "emoji", emoji: "👸" },
+    avatar: { kind: "ice-queen" },
     color: { from: "#BEE9FF", to: "#7FCBEE", solid: "#4FB6E8", dark: "#2E93C4" },
   },
   {
