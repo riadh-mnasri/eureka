@@ -7,6 +7,7 @@ import { PROFILES } from "@/lib/profiles";
 import { beltForXp } from "@/lib/gamification";
 import { loadProfileState, type ProfileState } from "@/lib/storage";
 import { BeltBadge } from "@/components/BeltBadge";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 
 export default function ParentsPage() {
   const t = useTranslations("parents");
@@ -37,13 +38,13 @@ export default function ParentsPage() {
             <div key={profile.id} className="notecard bg-card p-5">
               <div className="flex items-center gap-3 mb-4">
                 <div
-                  className="ink-shadow flex h-12 w-12 items-center justify-center text-2xl rounded-full"
+                  className="ink-shadow flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
                   style={{
                     background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
                   }}
                   aria-hidden
                 >
-                  {profile.emoji}
+                  <ProfileAvatar profile={profile} emojiClassName="text-2xl" />
                 </div>
                 <p className="font-heading text-lg font-bold">{profile.name}</p>
               </div>

@@ -11,6 +11,7 @@ import { BADGES } from "@/lib/badges";
 import { BeltBadge } from "@/components/BeltBadge";
 import { BadgeChip } from "@/components/BadgeChip";
 import { MasteryRadar } from "@/components/MasteryRadar";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 
 export function Dashboard({ profile }: { profile: Profile }) {
   const t = useTranslations("dashboard");
@@ -38,13 +39,13 @@ export function Dashboard({ profile }: { profile: Profile }) {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <div className="flex items-center gap-3 mb-10">
         <div
-          className="flex h-12 w-12 items-center justify-center text-xl shrink-0 rounded-full ink-shadow"
+          className="flex h-12 w-12 items-center justify-center shrink-0 overflow-hidden rounded-full ink-shadow"
           style={{
             background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
           }}
           aria-hidden
         >
-          {profile.emoji}
+          <ProfileAvatar profile={profile} emojiClassName="text-xl" />
         </div>
         <p className="font-heading text-xl font-bold flex-1">{profile.name}</p>
         <Link

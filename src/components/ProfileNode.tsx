@@ -7,6 +7,7 @@ import type { Profile } from "@/lib/profiles";
 import { beltForXp } from "@/lib/gamification";
 import { loadProfileState, setSelectedProfileId, type ProfileState } from "@/lib/storage";
 import { BeltBadge } from "@/components/BeltBadge";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 
 const OFFSET = [0, 28, 4] as const;
 
@@ -38,13 +39,13 @@ export function ProfileNode({ profile, index }: { profile: Profile; index: numbe
       style={{ marginTop: offset }}
     >
       <div
-        className="ink-shadow flex h-32 w-32 sm:h-36 sm:w-36 items-center justify-center text-5xl sm:text-6xl rounded-full transition-transform group-hover:-translate-y-1"
+        className="ink-shadow flex h-32 w-32 sm:h-36 sm:w-36 items-center justify-center overflow-hidden rounded-full transition-transform group-hover:-translate-y-1"
         style={{
           background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
         }}
         aria-hidden
       >
-        {profile.emoji}
+        <ProfileAvatar profile={profile} emojiClassName="text-5xl sm:text-6xl" />
       </div>
       <p className="font-heading text-xl font-bold text-foreground">{profile.name}</p>
       <p className="text-sm text-foreground/60">

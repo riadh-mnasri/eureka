@@ -1,11 +1,16 @@
 export type Tier = "eclaireur" | "chercheur" | "champion";
 
+export type Avatar =
+  | { kind: "emoji"; emoji: string }
+  | { kind: "dragon" }
+  | { kind: "chessboard" };
+
 export type Profile = {
   id: string;
   name: string;
   age: number;
   tier: Tier;
-  emoji: string;
+  avatar: Avatar;
   color: {
     from: string;
     to: string;
@@ -20,15 +25,15 @@ export const PROFILES: Profile[] = [
     name: "Syma",
     age: 6,
     tier: "eclaireur",
-    emoji: "🐣",
-    color: { from: "#FFD34D", to: "#FFC107", solid: "#FFB300", dark: "#E0980A" },
+    avatar: { kind: "emoji", emoji: "👸" },
+    color: { from: "#BEE9FF", to: "#7FCBEE", solid: "#4FB6E8", dark: "#2E93C4" },
   },
   {
     id: "sany",
     name: "Sany",
     age: 8,
     tier: "chercheur",
-    emoji: "🦊",
+    avatar: { kind: "chessboard" },
     color: { from: "#FF8A65", to: "#FF6B4A", solid: "#FF5A3C", dark: "#E0431F" },
   },
   {
@@ -36,7 +41,7 @@ export const PROFILES: Profile[] = [
     name: "Seji",
     age: 11,
     tier: "champion",
-    emoji: "🦉",
+    avatar: { kind: "dragon" },
     color: { from: "#4DD8C7", to: "#00C2A8", solid: "#00B39C", dark: "#00947F" },
   },
 ];
