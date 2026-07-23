@@ -1,7 +1,15 @@
 import { useLocale } from "next-intl";
 import { BELT_COLORS, BELT_LABELS, type Belt } from "@/lib/gamification";
 
-export function BeltBadge({ belt, size = "md" }: { belt: Belt; size?: "sm" | "md" }) {
+export function BeltBadge({
+  belt,
+  size = "md",
+  showLabel = true,
+}: {
+  belt: Belt;
+  size?: "sm" | "md";
+  showLabel?: boolean;
+}) {
   const locale = useLocale() as "fr" | "en";
   const color = BELT_COLORS[belt];
   const isDark = belt === "noire";
@@ -13,9 +21,11 @@ export function BeltBadge({ belt, size = "md" }: { belt: Belt; size?: "sm" | "md
         style={{ backgroundColor: color }}
         aria-hidden
       />
-      <span className={`font-bold ${size === "sm" ? "text-xs" : "text-sm"} ${isDark ? "text-foreground" : "text-foreground/80"}`}>
-        {BELT_LABELS[belt][locale]}
-      </span>
+      {showLabel && (
+        <span className={`font-bold ${size === "sm" ? "text-xs" : "text-sm"} ${isDark ? "text-foreground" : "text-foreground/80"}`}>
+          {BELT_LABELS[belt][locale]}
+        </span>
+      )}
     </div>
   );
 }
