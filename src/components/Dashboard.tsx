@@ -1,0 +1,145 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
+import type { Profile } from "@/lib/profiles";
+import { DOMAINS } from "@/lib/domains";
+import { beltForXp, toDateKey } from "@/lib/gamification";
+import { loadProfileState, type ProfileState } from "@/lib/storage";
+import { BADGES } from "@/lib/badges";
+import { BeltBadge } from "@/components/BeltBadge";
+import { BadgeChip } from "@/components/BadgeChip";
+import { MasteryRadar } from "@/components/MasteryRadar";
+
+export function Dashboard({ profile }: { profile: Profile }) {
+  const t = useTranslations("dashboard");
+  const tDomains = useTranslations("domains");
+  const locale = useLocale() as "fr" | "en";
+  const router = useRouter();
+  const [state, setState] = useState<ProfileState | null>(null);
+
+  useEffect(() => {
+    // localStorage is only available client-side; loading it after mount
+    // (instead of during render) keeps the first paint matching SSR output.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setState(loadProfileState(profile.id));
+  }, [profile.id]);
+
+  if (!state) {
+    return <div className="max-w-3xl mx-auto px-4 py-16 text-center">…</div>;
+  }
+
+  const { belt, nextThreshold } = beltForXp(state.totalXp);
+  const playedToday = state.lastPlayedDate === toDateKey(new Date());
+  const previewBadges = BADGES.slice(0, 4);
+
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-3">
+          <div
+            className="ink-shadow flex h-14 w-14 items-center justify-center text-2xl"
+            style={{
+              background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
+              clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
+            }}
+            aria-hidden
+          >
+            {profile.emoji}
+          </div>
+          <div>
+            <p className="font-heading text-xl font-bold">{profile.name}</p>
+            <BeltBadge belt={belt} size="sm" />
+          </div>
+        </div>
+        <Link
+          href="/"
+          className="text-sm font-semibold text-foreground/60 hover:text-foreground underline"
+        >
+          {t("switchProfileCta")}
+        </Link>
+      </div>
+
+      <div className="notecard bg-card p-6 sm:p-8 text-center mb-6">
+        <MasteryRadar domainXp={state.domainXp} />
+
+        <div className="mt-4">
+          {nextThreshold !== null ? (
+            <p className="text-xs text-foreground/60 font-semibold">
+              {state.totalXp}/{nextThreshold} {t("xpToNextBelt")}
+            </p>
+          ) : (
+            <p className="text-xs text-teal-dark font-semibold">{t("maxBelt")}</p>
+          )}
+          <div className="h-3 w-full max-w-xs mx-auto mt-2 rounded-full bg-card-border overflow-hidden">
+            <div
+              className="h-full rounded-full bg-teal transition-all"
+              style={{
+                width: `${
+                  nextThreshold ? Math.min(100, (state.totalXp / nextThreshold) * 100) : 100
+                }%`,
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-2 text-lg font-bold">
+          <span aria-hidden>🔥</span>
+          <span>
+            {state.streak} {state.streak === 1 ? t("streakDay") : t("streakDays")}
+          </span>
+        </div>
+      </div>
+
+      {playedToday ? (
+        <div className="notecard bg-teal/15 text-center py-4 px-4 font-semibold text-foreground mb-6">
+          {t("playedToday")}
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => router.push(`/profil/${profile.id}/defi`)}
+          className="ink-button w-full bg-coral text-white font-heading text-lg font-bold py-4 mb-6 cursor-pointer"
+        >
+          {t("startChallenge")}
+        </button>
+      )}
+
+      <div className="notecard bg-card p-6 mb-6">
+        <p className="font-heading text-lg font-bold mb-4">{tDomains("title")}</p>
+        <div className="grid grid-cols-2 gap-3">
+          {DOMAINS.map((domain) => (
+            <Link
+              key={domain.id}
+              href={`/profil/${profile.id}/competence/${domain.id}`}
+              className="flex items-center gap-2 rounded-lg border-2 border-foreground/20 px-3 py-3 hover:border-teal transition-colors"
+            >
+              <span className="text-2xl" aria-hidden>
+                {domain.emoji}
+              </span>
+              <span className="text-sm font-semibold text-foreground/80">{domain.label[locale]}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="notecard bg-card p-6">
+        <div className="flex items-center justify-between mb-4">
+          <p className="font-heading text-lg font-bold">{t("badges")}</p>
+          <Link
+            href={`/profil/${profile.id}/badges`}
+            className="text-sm font-semibold text-teal hover:underline"
+          >
+            {t("seeAllBadges")}
+          </Link>
+        </div>
+        <div className="grid grid-cols-4 gap-3">
+          {previewBadges.map((badge) => (
+            <BadgeChip key={badge.id} badge={badge} unlocked={state.badges.includes(badge.id)} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

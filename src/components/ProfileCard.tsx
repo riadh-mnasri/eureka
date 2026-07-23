@@ -35,11 +35,11 @@ export function ProfileCard({ profile, index }: { profile: Profile; index: numbe
     <button
       type="button"
       onClick={handleSelect}
-      className="notecard group relative bg-card border-2 border-card-border px-6 py-7 text-center transition-transform hover:-translate-y-1 hover:rotate-0 cursor-pointer"
+      className="notecard group relative bg-card px-6 py-7 text-center transition-transform hover:-translate-y-1 hover:rotate-0 cursor-pointer"
       style={{ transform: `rotate(${tilt}deg)` }}
     >
       <div
-        className="mx-auto mb-4 flex h-20 w-20 items-center justify-center text-4xl"
+        className="ink-shadow mx-auto mb-4 flex h-20 w-20 items-center justify-center text-4xl"
         style={{
           background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
           clipPath: HEXAGON,
@@ -58,7 +58,7 @@ export function ProfileCard({ profile, index }: { profile: Profile; index: numbe
         </div>
       )}
       <span
-        className="inline-block rounded-lg px-4 py-1.5 text-sm font-bold text-white"
+        className="ink-button inline-block px-4 py-1.5 text-sm font-bold text-white"
         style={{ backgroundColor: profile.color.solid }}
       >
         {state && state.totalXp > 0 ? t("continue") : t("play")}
