@@ -9,9 +9,9 @@ import { loadProfileState, setSelectedProfileId, type ProfileState } from "@/lib
 import { BeltBadge } from "@/components/BeltBadge";
 
 const HEXAGON = "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)";
-const TILT = [-2, 1.5, -1] as const;
+const OFFSET = [0, 34, 6] as const;
 
-export function ProfileCard({ profile, index }: { profile: Profile; index: number }) {
+export function ProfileNode({ profile, index }: { profile: Profile; index: number }) {
   const t = useTranslations("home");
   const router = useRouter();
   const [state, setState] = useState<ProfileState | null>(null);
@@ -24,7 +24,7 @@ export function ProfileCard({ profile, index }: { profile: Profile; index: numbe
   }, [profile.id]);
 
   const belt = state ? beltForXp(state.totalXp).belt : "blanche";
-  const tilt = TILT[index % TILT.length];
+  const offset = OFFSET[index % OFFSET.length];
 
   function handleSelect() {
     setSelectedProfileId(profile.id);
@@ -35,11 +35,11 @@ export function ProfileCard({ profile, index }: { profile: Profile; index: numbe
     <button
       type="button"
       onClick={handleSelect}
-      className="notecard group relative bg-card px-6 py-7 text-center transition-transform hover:-translate-y-1 hover:rotate-0 cursor-pointer"
-      style={{ transform: `rotate(${tilt}deg)` }}
+      className="group flex flex-col items-center gap-2 cursor-pointer"
+      style={{ marginTop: offset }}
     >
       <div
-        className="ink-shadow mx-auto mb-4 flex h-20 w-20 items-center justify-center text-4xl"
+        className="ink-shadow flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center text-4xl sm:text-5xl transition-transform group-hover:-translate-y-1"
         style={{
           background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
           clipPath: HEXAGON,
@@ -48,17 +48,13 @@ export function ProfileCard({ profile, index }: { profile: Profile; index: numbe
       >
         {profile.emoji}
       </div>
-      <p className="font-heading text-xl font-bold text-foreground">{profile.name}</p>
-      <p className="text-sm text-foreground/60 mb-3">
+      <p className="font-heading text-lg font-bold text-foreground">{profile.name}</p>
+      <p className="text-xs text-foreground/60">
         {profile.age} {t("yearsOld")}
       </p>
-      {state && state.totalXp > 0 && (
-        <div className="mb-3 flex justify-center">
-          <BeltBadge belt={belt} size="sm" />
-        </div>
-      )}
+      {state && state.totalXp > 0 && <BeltBadge belt={belt} size="sm" />}
       <span
-        className="ink-button inline-block px-4 py-1.5 text-sm font-bold text-white"
+        className="ink-button inline-block px-4 py-1 text-xs font-bold text-white mt-1"
         style={{ backgroundColor: profile.color.solid }}
       >
         {state && state.totalXp > 0 ? t("continue") : t("play")}
