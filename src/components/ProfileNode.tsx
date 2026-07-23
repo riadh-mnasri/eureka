@@ -38,7 +38,7 @@ export function ProfileNode({ profile, index }: { profile: Profile; index: numbe
       style={{ marginTop: offset }}
     >
       <div
-        className="ink-shadow flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center text-4xl sm:text-5xl rounded-full transition-transform group-hover:-translate-y-1"
+        className="ink-shadow flex h-32 w-32 sm:h-36 sm:w-36 items-center justify-center text-5xl sm:text-6xl rounded-full transition-transform group-hover:-translate-y-1"
         style={{
           background: `linear-gradient(135deg, ${profile.color.from}, ${profile.color.to})`,
         }}
@@ -46,13 +46,13 @@ export function ProfileNode({ profile, index }: { profile: Profile; index: numbe
       >
         {profile.emoji}
       </div>
-      <p className="font-heading text-lg font-bold text-foreground">{profile.name}</p>
-      <p className="text-xs text-foreground/60">
+      <p className="font-heading text-xl font-bold text-foreground">{profile.name}</p>
+      <p className="text-sm text-foreground/60">
         {profile.age} {t("yearsOld")}
       </p>
       {state && state.totalXp > 0 && <BeltBadge belt={belt} size="sm" />}
       <span
-        className="ink-button inline-block px-4 py-1.5 text-xs font-bold text-white mt-1 rounded-xl"
+        className="ink-button inline-block px-5 py-2 text-sm font-bold text-white mt-1 rounded-xl"
         style={{
           backgroundColor: profile.color.solid,
           // @ts-expect-error custom property read by the ink-button shadow
